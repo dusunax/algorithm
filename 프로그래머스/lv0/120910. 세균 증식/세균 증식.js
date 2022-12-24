@@ -3,10 +3,7 @@
 function solution(n, time) {
     const multifly = 2;
     
-    while(time) {
-        n = n * multifly;
-        time--;
-    }
+    while(time--) n = n * multifly;
     return n;
 }
 
