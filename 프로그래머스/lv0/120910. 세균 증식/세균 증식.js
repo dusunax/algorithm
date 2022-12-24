@@ -1,0 +1,1 @@
+const solution = (n, time) => new Array(time).fill(2).reduce((acc, multiply) => { return acc * multiply }, n)
