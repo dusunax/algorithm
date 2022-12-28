@@ -5,7 +5,7 @@ function solution(n, k) {
         drink: 2000
     };
     
-    // ## javaScript의 Ti
+    // ## javaScript의 Tilde
     
     // 32비트 변환 후 NOT 연산 : 즉, n이라면 -(n+1)이다.
     // 소숫점을 제거한다.
