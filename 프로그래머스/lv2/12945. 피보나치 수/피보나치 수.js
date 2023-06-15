@@ -1,10 +1,10 @@
 /** 230615: DP 연습-1  */
+const cache = [];
 function solution(n) {
-    const cache = [];
-
     for (let i = 0; i <= n; i++) {
         if (i === 0) cache[i] = 0;
         else if (i === 1) cache[i] = 1;
+        else if (cache[i] !== undefined) return cache[i];
         else {
             cache[i] = cache[i - 1] % 1234567 + cache[i - 2] % 1234567;
         }
