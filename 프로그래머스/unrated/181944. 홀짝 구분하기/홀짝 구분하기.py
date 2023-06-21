@@ -1,9 +1,10 @@
 a = int(input())
 
-# 1. f-string 템플릿
+# 1. format 메소드
 # print('{} is {}'.format(a, "even" if a % 2 == 0 else "odd"))
 
-# 2. if else문
+# 2. f-string 템플릿
+# if else문
 if a % 2 == 0:
     result = "even"
 else:
