@@ -10,7 +10,7 @@ function solution(routes) {
     for (let i = 1; i<routes.length; i++) {
         const [entry, exit] = routes[i];
         
-        // console.log(routes, routes[i],camera, entry > camera)
+        // 선분이 겹치지는 지 확인 === 끝점과 시작점 비교
         if(entry > camera) {
             count++;
             camera = exit; // 카메라 => 도착 위치
