@@ -2,11 +2,13 @@
 
 - 2022년 11월 4일부터 백준 허브 적용 중입니다.
 https://github.com/BaekjoonHub/BaekjoonHub
+- 2023년 9월 3일부터 LeetHub 적용 중입니다.
+https://github.com/QasimWani/LeetHub
 
 ---
 ### 문제출처
 1. 프로그래머스 https://programmers.co.kr/
-2. 해커랭크 https://www.hackerrank.com/dusunax
+2. leetcode https://leetcode.com/dusunax/
 
 ### 사용언어
 ```
