@@ -11,8 +11,6 @@ var uniquePaths = function(m, n) {
     for (let j = 0; j < n; j++) {
         tiles[0][j] = 1;
     }
-
-    tiles[0][0] = 1;
     
     for (let k = 1; k < m; k++) {
         for (let l = 1; l < n; l++) {
