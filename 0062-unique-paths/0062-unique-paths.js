@@ -4,21 +4,21 @@
  * @return {number}
  */
 var uniquePaths = function(m, n) {
-    const tails = new Array(m).fill(0).map(() => new Array(n).fill(0));
+    const tiles = new Array(m).fill(0).map(() => new Array(n).fill(0));
     for (let i = 0; i < m; i++) {
-        tails[i][0] = 1;
+        tiles[i][0] = 1;
     }
     for (let j = 0; j < n; j++) {
-        tails[0][j] = 1;
+        tiles[0][j] = 1;
     }
 
-    tails[0][0] = 1;
+    tiles[0][0] = 1;
     
     for (let k = 1; k < m; k++) {
         for (let l = 1; l < n; l++) {
-            tails[k][l] = tails[k - 1][l] + tails[k][l - 1];
+            tiles[k][l] = tiles[k - 1][l] + tiles[k][l - 1];
         }
     }
     
-    return tails[m - 1][n - 1]
+    return tiles[m - 1][n - 1]
 };
