@@ -8,12 +8,21 @@ var findDifference = function(nums1, nums2) {
     const nums1Set = new Set(nums1);
     const nums2Set = new Set(nums2);
 
-    nums1.map((e) => {
-        if(nums2.includes(e)){
-            nums1Set.delete(e)
-            nums2Set.delete(e)
-        }
+    const result1 = [];
+    const result2 = [];
+
+    [...nums1, ...nums2].map((e) => {
+        // if(nums2.includes(e)){
+        //     nums1Set.delete(e)
+        //     nums2Set.delete(e)
+        // }
+
+        if(!nums1Set.has(e) && !result1.includes(e)) result1.push(e);
+        if(!nums2Set.has(e) && !result2.includes(e)) result2.push(e);
     })
 
-    return [Array.from(nums1Set), Array.from(nums2Set)]
+    console.log()
+
+    // return [Array.from(nums1Set), Array.from(nums2Set)]
+    return [result2, result1]
 };
