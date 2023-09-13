@@ -4,6 +4,8 @@
 https://github.com/BaekjoonHub/BaekjoonHub
 - 2023년 9월 3일부터 LeetHub 적용 중입니다.
 https://github.com/QasimWani/LeetHub
+- 2023년 9월 13일 LeetHub 업로드 관련 이슈 (구글 익스텐션과 개발자 모드)
+  - [feat: leetcode 업로드 개선 필요](https://github.com/dusunax/algorithm/issues/1)
 
 ---
 ### 문제출처
