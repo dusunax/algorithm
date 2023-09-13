@@ -5,7 +5,7 @@
  */
 var twoSum = function(nums, target) {
     for (let i = 0; i < nums.length; i++) {
-        console.log('leethub v2 testing 9')
+        console.log('leethub v2 testing 10')
         const otherNumber = target - nums[i];
         const idx = nums.indexOf(otherNumber);
 
