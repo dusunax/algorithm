@@ -31,7 +31,7 @@ javaScript, python(기초)
 | 그리디🌱 | 각 단계에서 가장 최적의 선택을 하는 방법 | Greedy |
 | BFS🌱 | 그래프나 트리에서 너비우선으로 탐색하는 방법 | Breadth First Search |
 | DFS🌱 | 그래프나 트리에서 깊이우선으로 탐색하는 방법 | Depth First Search |
-| 등적 계획법(DP)🌱 | 작은 부분 문제의 해를 조합하여 전체 문제의 해를 구하는 방법 | Dynamic Programming |
+| 등적 계획법(DP)🌱🌱 | 작은 부분 문제의 해를 조합하여 전체 문제의 해를 구하는 방법 | Dynamic Programming |
 | 분할 정복🌱 | 큰 문제를 작은 문제로 나누어 해결하는 방법 | Divide and Conquer |
 | 최단 거리 알고리즘 | 그래프나 트리에서 최단 경로를 찾는 방법 | Shortest Path Algorithms |
 | 백트래킹 | 모든 가능한 경우를 탐색하면서 불필요한 경우를 배제하는 방법 | Backtracking |
