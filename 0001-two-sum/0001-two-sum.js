@@ -1,3 +1,4 @@
+// O(N^2)
 /**
  * @param {number[]} nums
  * @param {number} target
