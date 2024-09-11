@@ -3,7 +3,9 @@
  * @param {number[]} nums2
  * @return {number[]}
  */
-// calculate Frequency
+// Calculate Frequency
+// - time: O(N+M)
+// - space: O(Min(N,M))
 var intersect = function(nums1, nums2) { 
     const map = new Map();
     const result = [];
