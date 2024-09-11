@@ -1,9 +1,10 @@
 class Solution:
     def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
         result = []
-        counter = Counter(nums1) # Counter는 요소의 빈도를 세는 데 최적화된 딕셔너리 서브클래스입니다.
+        shorter, longer = (nums1, nums2) if len(nums1) < len(nums2) else (nums2, nums1)
+        counter = Counter(shorter)
 
-        for num in nums2:
+        for num in longer:
             print(num, counter)
             if counter[num] > 0:
                 counter[num] -= 1
