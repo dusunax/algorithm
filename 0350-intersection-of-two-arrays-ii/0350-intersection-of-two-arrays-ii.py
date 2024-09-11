@@ -5,7 +5,6 @@ class Solution:
         counter = Counter(shorter)
 
         for num in longer:
-            print(num, counter)
             if counter[num] > 0:
                 counter[num] -= 1
                 result.append(num)
