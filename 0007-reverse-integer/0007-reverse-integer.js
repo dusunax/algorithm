@@ -2,7 +2,7 @@
  * @param {number} x
  * @return {number}
  */
-// Convert to string
+// 1. Convert to string
 // var reverse = function(x) {
 //     const reversedStr = Math.abs(x).toString().split('').reverse().join("");
 //     const result = Number(reversedStr) * Math.sign(x);
@@ -14,7 +14,7 @@
 //     return result;
 // };
 
-// Using remainder
+// 2. Using remainder
 var reverse = function(x) {
     let num = Math.abs(x)
     let res = 0
