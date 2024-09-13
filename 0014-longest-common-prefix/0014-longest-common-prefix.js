@@ -3,19 +3,14 @@
  * @return {string}
  */
 var longestCommonPrefix = function(strs) {
-    let result = '';
-    let minLength = Math.min(...strs.map(str => str.length));
-    
-    for (let i = 0; i < minLength; i++) {
-        const char = strs[0][i]
+    let commonPrefix = strs[0]; 
 
-        for (let j = 1; j < strs.length; j++) {
-            if (strs[j][i] !== char) {
-                return result;
-            }
-        }     
-        result += char;
+    for (let i = 1; i < strs.length; i++) {
+            while (strs[i].indexOf(commonPrefix) !== 0) {
+            commonPrefix = commonPrefix.slice(0, -1);
+            if (!commonPrefix) return "";
+        }
     }
-    
-    return result;
+
+    return commonPrefix;
 };
