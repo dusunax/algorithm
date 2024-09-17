@@ -7,8 +7,6 @@ var isValidSudoku = function(board) {
     // 1. row contain 1-9
     // 2. column contain 1-9
     // 3. 3 x 3 sub-boxes contain 1-9
-
-    // use Hash Set
     const rows = new Array(9).fill(null).map(() => new Set());
     const cols = new Array(9).fill(null).map(() => new Set());
     const boxes = new Array(9).fill(null).map(() => new Set());
