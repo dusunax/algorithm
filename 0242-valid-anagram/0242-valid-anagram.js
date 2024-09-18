@@ -13,13 +13,10 @@ var isAnagram = function(s, t) {
 
     for (let char of t){
         let match = frequency.get(char);
-        if(match === 0) return false;
+        if(!match) return false; // match can be undefined of zero
 
         frequency.set(char, match - 1)
     }
-
-    const allZero = [...frequency.values()].every(v => v === 0)
-    if(!allZero) return false
 
     return true
 };
