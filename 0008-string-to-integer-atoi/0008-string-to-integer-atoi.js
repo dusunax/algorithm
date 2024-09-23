@@ -2,6 +2,8 @@
  * @param {string} s
  * @return {number}
  */
+// Parsing
+// Range Clamping
 var myAtoi = function(s) {
     let result = "";
     let sign = 1
