@@ -33,5 +33,5 @@ var myAtoi = function(s) {
             return min;
         }
     }
-    return (+result) * sign 
+    return result * sign 
 };
