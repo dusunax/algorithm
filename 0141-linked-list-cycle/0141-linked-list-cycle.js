@@ -20,13 +20,14 @@ var hasCycle = function(head) {
 
     // Floyd's Tortoise and Hare
     // cycle이 있을 때 두 포인터가 언젠가 반드시 만난다
-    while (slow !== fast) {
-        if(!fast || fast.next){
-            return false;
-        }
+    while (fast && fast.next) {
         slow = slow.next;
         fast = fast.next.next;
+
+        if (slow === fast) {
+            return true;
+        }
     }
 
-    return true;
+    return false;
 };
