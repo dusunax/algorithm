@@ -11,16 +11,21 @@
  * @return {boolean}
  */
 var hasCycle = function(head) {
-    if (!head || !head.next) return false;
+    if(!head || !head.next) {
+        return false;
+    }
 
-    let before = head;
-    let forward = head.next;
+    let slow = head;
+    let fast = head;
 
-    while (before !== forward) {
-        if (!forward || !forward.next) return false;
-        
-        before = before.next;
-        forward = forward.next.next;
+    // Floyd's Tortoise and Hare
+    // cycle이 있을 때 두 포인터가 언젠가 반드시 만난다
+    while (slow !== fast) {
+        if(!fast || fast.next){
+            return false;
+        }
+        slow = slow.next;
+        fast = fast.next.next;
     }
 
     return true;
