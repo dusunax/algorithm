@@ -7,7 +7,7 @@ class Solution:
         right = n
 
         while left < right:
-            mid = math.floor((left + right) / 2)
+            mid = math.floor(left + (right - left) / 2)
             
             if isBadVersion(mid):
                 right = mid
