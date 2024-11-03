@@ -7,7 +7,7 @@ public class Solution extends VersionControl {
         int right = n;
 
         while (left < right) {
-            int mid = left + (right - left) / 2; 
+            int mid = (int) Math.floor(left + (right - left) / 2); 
             
             if(isBadVersion(mid)){
                 right = mid;
@@ -29,3 +29,19 @@ public class Solution extends VersionControl {
 
 // how can we cast?
 // do: int mid = (int) Math.floor((left + right) / 2);
+
+/**
+* ❗️Time Limit Exceeded (when n is 2126753390)
+ */
+ // use `left + (right - left) / 2` than `(left + right) / 2`
+ // avoids overflow, because (right - left) will be smaller than right and left when added back to left, 
+ // preventing the sum from exceeding int limits.
+
+
+/**
+* \U0001f449 `left + (right - left) / 2` and `(left + right) / 2`
+ */
+// how to prevent overflow & calculate the same result
+// when if, left = 1,000, right = 2,000
+// - (left + right) / 2 is 1500, (1000 + 2000) / 2 = 1500
+// - left + (right - left) / 2 is also 1500, 1000 + (2000 - 1000) / 2 = 1000 + 500 = 1500
