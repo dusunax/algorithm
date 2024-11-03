@@ -34,8 +34,8 @@ JavaScript, Python(기초), Java(기초)
 | 등적 계획법(DP)🌱🌱 | 작은 부분 문제의 해를 조합하여 전체 문제의 해를 구하는 방법 | Dynamic Programming |
 | 분할 정복🌱 | 큰 문제를 작은 문제로 나누어 해결하는 방법 | Divide and Conquer |
 | 최단 거리 알고리즘 | 그래프나 트리에서 최단 경로를 찾는 방법 | Shortest Path Algorithms |
-| 백트래킹 | 모든 가능한 경우를 탐색하면서 불필요한 경우를 배제하는 방법 | Backtracking |
-| 이분 탐색 | 정렬된 배열에서 특정 값을 찾는 방법 | Binary Search |
+| 백트래킹🌱 | 모든 가능한 경우를 탐색하면서 불필요한 경우를 배제하는 방법 | Backtracking |
+| 이분 탐색🌱 | 정렬된 배열에서 특정 값을 찾는 방법 | Binary Search |
 | LIS, 최대 증가 부분 수열 | 배열에서 증가하는 부분 수열 중 가장 긴 수열을 찾는 방법 | Longest Increasing Subsequence |
 | 비트 마스킹 | 이진수 연산을 활용한 알고리즘 | Bitmasking |
 | 투 포인터🌱 | 두 개의 포인터를 활용한 알고리즘 | Two Pointers |
