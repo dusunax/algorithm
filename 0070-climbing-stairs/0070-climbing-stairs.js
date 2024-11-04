@@ -44,3 +44,6 @@ var climbStairs = function(n) {
 // - can be optimized to use constant space
 
 // 2. Top-bottom aprroach: memoization
+// - uses recursion
+// - storing the results in a memoization structure (extra space, O(n))
+// - use for overlapping subproblems (if it fits a recursive pattern)
