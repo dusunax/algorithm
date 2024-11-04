@@ -10,7 +10,7 @@ var climbStairs = function(n) {
     let second = 2;
 
     for (let i = 3; i < n+1; i++){
-        const curr = first + second; // base case
+        const curr = first + second; 
         first = second;
         second = curr;
     }
