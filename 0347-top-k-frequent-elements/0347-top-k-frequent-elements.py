@@ -4,16 +4,16 @@
 
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        # frequency_map = Counter(nums)
-        # sorted_frequencies = sorted(frequency_map.items(), key=lambda x: x[1], reverse=True)
-        # result = []
-
-        # for e in sorted_frequencies:
-        #     result.append(e[0])
-
-        # return result[0:k]
-
         frequency_map = Counter(nums)
+        n = len(nums)
+        buckets = [[] for _ in range(n + 1)]
 
-        return [item[0] for item in heapq.nlargest(k, frequency_map.items(), key=lambda x: x[1])]
+        for num, freq in frequency_map.items():
+            buckets[freq].append(num)
 
+        result = []
+        for i in range(len(buckets) - 1, 0, -1):
+            for num in buckets[i]:
+                result.append(num)
+                if len(result) == k:
+                    return result
