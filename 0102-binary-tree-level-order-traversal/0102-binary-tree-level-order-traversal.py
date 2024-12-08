@@ -46,4 +46,5 @@ class Solution:
                 traverseNode(node.right, level + 1)
 
         traverseNode(root, 0)
+        
         return result
