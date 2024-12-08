@@ -4,6 +4,24 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+'''
+# Leetcode 102. Binary Tree Level Order Traversal
+
+## Time and Space Complexity
+
+```
+TC: O(n)
+SC: O(n)
+```
+
+### TC is O(n):
+- traversing through every node just once. O(n)
+
+### SC is O(n):
+- storing the result in a list. O(n)
+'''
+
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         # level order traversal: [[], [], []]
