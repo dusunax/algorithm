@@ -21,11 +21,11 @@ class Solution {
         List<Integer> result = new ArrayList<>();  
         for (int i = n; i > 0; i--) {
             for (int num : buckets[i]) {
+                if (result.size() == k) break;
                 result.add(num);
-                if (result.size() == k) {
-                    return result.stream().mapToInt(Integer::intValue).toArray(); // Convert the result list to an array
-                }
             }
         }
+
+        return result.stream().mapToInt(Integer::intValue).toArray(); // need return statement 
     }
 }
