@@ -21,8 +21,8 @@ Solution.prototype.shuffle = function() {
     let shuffledArray = [...this.array];
 
     for (let i = shuffledArray.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1)); // Random index between 0 and i
-      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]]; // Swap elements
+      const j = Math.floor(Math.random() * (i + 1)); 
+      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
     }
     
     this.array = shuffledArray;
