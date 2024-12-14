@@ -59,12 +59,14 @@ class Solution:
         '''
         shuffled = self.array[:]
         random.shuffle(shuffled)
+        self.array = shuffled
         return self.array
         
         '''
         3-2. random.sample make a new array
         '''
         # shuffled = random.sample(self.array, len(self.array))
+        # self.array = shuffled
         # return self.array
 
 # Your Solution object will be instantiated and called as such:
