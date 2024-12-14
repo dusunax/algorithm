@@ -57,17 +57,17 @@ class Solution:
         '''
         3-1. random.shuffle is shuffle array in place
         '''
-        shuffled = self.array[:]
-        random.shuffle(shuffled)
-        self.array = shuffled
-        return self.array
+        # shuffled = self.array[:]
+        # random.shuffle(shuffled)
+        # self.array = shuffled
+        # return self.array
         
         '''
         3-2. random.sample make a new array
         '''
-        # shuffled = random.sample(self.array, len(self.array))
-        # self.array = shuffled
-        # return self.array
+        shuffled = random.sample(self.array, len(self.array))
+        self.array = shuffled
+        return self.array
 
 # Your Solution object will be instantiated and called as such:
 # obj = Solution(nums)
