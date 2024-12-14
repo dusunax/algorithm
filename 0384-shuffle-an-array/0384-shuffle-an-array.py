@@ -44,6 +44,7 @@ class Solution:
 
     '''
     3. use random
+    - in general, random.shuffle() is more efficient than random.sample() when you're shuffling the entire list.
     '''
     def __init__(self, nums: List[int]):
         self.array = nums[:]
@@ -57,17 +58,17 @@ class Solution:
         '''
         3-1. random.shuffle is shuffle array in place
         '''
-        # shuffled = self.array[:]
-        # random.shuffle(shuffled)
-        # self.array = shuffled
-        # return self.array
+        shuffled = self.array[:]
+        random.shuffle(shuffled)
+        self.array = shuffled
+        return self.array
         
         '''
         3-2. random.sample make a new array
         '''
-        shuffled = random.sample(self.array, len(self.array))
-        self.array = shuffled
-        return self.array
+        # shuffled = random.sample(self.array, len(self.array))
+        # self.array = shuffled
+        # return self.array
 
 # Your Solution object will be instantiated and called as such:
 # obj = Solution(nums)
