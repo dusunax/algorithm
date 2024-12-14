@@ -44,7 +44,6 @@ class Solution:
 
     '''
     3. use random
-    - in general, random.shuffle() is more efficient than random.sample() when you're shuffling the entire list.
     '''
     def __init__(self, nums: List[int]):
         self.array = nums[:]
