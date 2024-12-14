@@ -28,6 +28,23 @@ class Solution:
     2. need to use shallow copy
     - Fisher-Yates shuffle will do TC: O(n), SC: no additional memory
     '''
+    # def __init__(self, nums: List[int]):
+    #     self.array = nums[:]
+    #     self.origin = nums[:]
+
+    # def reset(self) -> List[int]:
+    #     self.array = self.origin[:]
+    #     return self.origin
+
+    # def shuffle(self) -> List[int]:
+    #     for i in range(len(self.array) - 1, 0, -1):
+    #         j = random.randint(0, i)
+    #         self.array[i], self.array[j] = self.array[j], self.array[i]
+    #     return self.array
+
+    '''
+    3. use random
+    '''
     def __init__(self, nums: List[int]):
         self.array = nums[:]
         self.origin = nums[:]
@@ -37,10 +54,18 @@ class Solution:
         return self.origin
 
     def shuffle(self) -> List[int]:
-        for i in range(len(self.array) - 1, 0, -1):
-            j = random.randint(0, i)
-            self.array[i], self.array[j] = self.array[j], self.array[i]
+        '''
+        3-1. random.shuffle is shuffle array in place
+        '''
+        shuffled = self.array[:]
+        random.shuffle(shuffled)
         return self.array
+        
+        '''
+        3-2. random.sample make a new array
+        '''
+        # shuffled = random.sample(self.array, len(self.array))
+        # return self.array
 
 # Your Solution object will be instantiated and called as such:
 # obj = Solution(nums)
