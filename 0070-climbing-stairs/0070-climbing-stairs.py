@@ -1,36 +1,34 @@
+# 
 class Solution:
+    '''
+    1. Bottom-up approach
+    '''
+    # def climbStairsBU(self, n: int) -> int:
+    #     if n == 1 or n == 2:
+    #         return n
+        
+    #     # SC: O(1)
+    #     prev2 = 1 # ways to step 0
+    #     prev1 = 1 # ways to step 1 
+
+    #     for i in range(3, n + 1): # TC: O(n)
+    #         current = prev1 + prev2 # ways to (n-1) + (n-2)
+    #         prev2 = prev1
+    #         prev1 = current
+
+    #     return prev1
+
+    '''
+    2. Top-down approach
+    '''
     def climbStairs(self, n: int) -> int:
-        # 1. Bottom-up
-        if n == 1 or n == 2:
-            return n
-        
-        first = 1
-        second = 2
+        memo = {}
+        def dp(step: int, memo: int) -> int:
+            if step == 1 or step == 2:
+                memo[step] = step    
+            if step not in memo:
+                memo[step] = dp(step - 1, memo) + dp(step - 2, memo)
 
-        for i in range(3, n + 1):
-            curr = first + second
-            first = second
-            second = curr
-        
-        return second
+            return memo[step]
 
-        # 2. Top-bottom
-        # memo = {}
-        # def dp (self, step, memo) -> int:
-        #     if step == 1 or step == 2:
-        #         return step
-        #     if step in memo:
-        #         return memo[step]
-        #     memo[step] = dp(self, step -1, memo) + dp(self, step - 2, memo)
-        #     return memo[step]
-        
-        # return dp(self, n, memo)
-
-# \U0001f4cc Python!
-# use `if step in memo``, not `if memo[step]``
-
-# Unnecessary self
-# - https://www.geeksforgeeks.org/self-in-python-class/
-# - you don’t need to include self in each call => it’s defined within the scope of the method climbStairs\U0001f914
-
-# use `==`` for comparison, not `is`
+        return dp(n, memo)
