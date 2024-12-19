@@ -17,8 +17,6 @@ class Solution {
         Map<Integer, Integer> memo = new HashMap<>(); // Map(keyword for declaration type) HashMap(built-in java collection)
         return dp(n, memo);
     }
-
-    // - must specify the types of method parameters and return values
     private int dp(int step, Map<Integer, Integer> memo){ 
         if (step == 1 || step == 2){
             return step;
