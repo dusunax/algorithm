@@ -12,8 +12,8 @@ for loop 2 to n:
 dp[n]: 최종 디코드 가능한 경우의 수 결과
 '''
 class Solution:
-    def isDecodable(self, int: int):
-        return 1 <= int <= 26
+    def isDecodable(self, str: str):
+        return 1 <= int(str) <= 26 and str[0] != '0'
 
     def numDecodings(self, s: str) -> int:
         if s[0] == "0":
@@ -25,8 +25,8 @@ class Solution:
         dp[1] = 1
 
         for i in range(2, n + 1):
-            one = int(s[i - 1])
-            two = int(s[i - 2:i])
+            one = s[i - 1]
+            two = s[i - 2:i]
 
             if self.isDecodable(one):
                 dp[i] += dp[i - 1]
