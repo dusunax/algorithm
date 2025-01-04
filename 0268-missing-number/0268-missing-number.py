@@ -53,12 +53,11 @@ class Solution:
     '''
     def missingNumber(self, nums: List[int]) -> int:
         n = len(nums)
-        xor_all = 0
         xor_nums = 0
 
         for i in range(n + 1):
             if i < n:
-                xor_result ^= nums[i]
-            xor_result ^= i
+                xor_nums ^= nums[i]
+            xor_nums ^= i
 
-        return xor_all^xor_nums
+        return xor_nums
