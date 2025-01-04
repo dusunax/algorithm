@@ -57,9 +57,8 @@ class Solution:
         xor_nums = 0
 
         for i in range(n + 1):
-            xor_all ^= i
-        
-        for num in nums:
-            xor_nums ^= num
+            if i < n:
+                xor_result ^= nums[i]
+            xor_result ^= i
 
         return xor_all^xor_nums
