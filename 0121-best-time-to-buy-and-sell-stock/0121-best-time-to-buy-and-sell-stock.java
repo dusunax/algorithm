@@ -3,11 +3,9 @@ class Solution {
         int min_price = prices[0];
         int max_profit = 0;
 
-        for (int i = 0; i < prices.length; i++) {
-            if (min_price > prices[i]) {
-                min_price = prices[i];
-            }
-            max_profit = Math.max(max_profit, prices[i] - min_price);
+        for (int price : prices){
+            min_price = Math.min(price, min_price);
+            max_profit = Math.max(price - min_price, max_profit);
         }
 
         return max_profit;
