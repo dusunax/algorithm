@@ -18,12 +18,17 @@ SC: O(1)
 
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        min_price = prices[0]
+        # is there's a base case??
+        if len(prices) == 1:
+            return 0
+        
+        # two pointers
+        lowest_price = prices[0]
         max_profit = 0
-
-        for i in range(len(prices)):
-            if min_price > prices[i]:
-                min_price = prices[i]
-            max_profit = max(prices[i] - min_price, max_profit)
+        
+        for price in prices:
+            lowest_price = min(price, lowest_price)
+            curr_profit = price - lowest_price
+            max_profit = max(curr_profit, max_profit)
         
         return max_profit
