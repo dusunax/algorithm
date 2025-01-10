@@ -4,7 +4,7 @@ class Solution:
         n = len(s)
 
         segment_dp = [False] * (n + 1)
-        segment_dp[0] = True
+        segment_dp[0] = True # Base case: an empty string is segmentable
 
         for end in range(1, n + 1):
             for start in range(end):
