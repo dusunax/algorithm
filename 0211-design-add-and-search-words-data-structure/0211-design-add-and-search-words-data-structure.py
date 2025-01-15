@@ -27,7 +27,7 @@ class WordDictionary:
                         return True
                 return False
             else:
-                return dfs(node.get(char, {}), i + 1)
+                return dfs(node[char], i+1) if char in node else False
         
         return dfs(self.trie, 0)
 
