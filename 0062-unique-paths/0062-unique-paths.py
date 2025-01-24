@@ -4,7 +4,6 @@ class Solution:
 
         for y in range(1, m):
             for x in range(1, n):
-                print(x, y)
                 dp[y][x] = dp[y - 1][x] + dp[y][x - 1]
 
         return dp[m - 1][n - 1]
