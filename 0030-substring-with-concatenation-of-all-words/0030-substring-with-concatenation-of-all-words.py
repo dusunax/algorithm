@@ -1,8 +1,13 @@
-# Slide window to check Exact length and Exact count.
+'''
+# 30. Substring with Concatenation of All Words
+
+slide window to find the substring with concatenation.
+- check if it has exact length and exact count.
+'''
 class Solution:
     def findSubstring(self, s: str, words: List[str]) -> List[int]:
         word_len = len(words[0])
-        substr_len = len(words) * word_len
+        concat_len = len(words) * word_len
         word_count = Counter(words)
         result = []
 
@@ -23,7 +28,7 @@ class Solution:
                         window_count[left_word] -= 1
                         left += word_len
 
-                    if right - left == substr_len:
+                    if right - left == concat_len:
                         result.append(left)
 
                 else:
