@@ -15,7 +15,9 @@ class Solution:
                 return
 
             current = heights[r][c]
-            if (r, c) in visited or current < prev_height:
+            is_visited = (r, c) in visited
+            is_uphill = current < prev_height
+            if is_visited or is_uphill:
                 return
             
             visited.add((r, c))
