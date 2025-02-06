@@ -3,5 +3,5 @@ class Solution:
         if len(nums) == 1:
             return nums[0]
 
-        return min(*nums)
+        return min(nums)
         
