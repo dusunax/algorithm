@@ -28,6 +28,6 @@ class Solution:
             dfs(r, max_col - 1, atlantic, heights[r][max_col - 1]) # right
         for c in range(max_col):
             dfs(0, c, pacific, heights[0][c]) # top
-            dfs(max_col - 1, c, atlantic, heights[max_row - 1][c]) # bottom
+            dfs(max_row - 1, c, atlantic, heights[max_row - 1][c]) # bottom
 
         return list(pacific & atlantic)
