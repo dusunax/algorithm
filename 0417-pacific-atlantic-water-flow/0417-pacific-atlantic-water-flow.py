@@ -1,12 +1,19 @@
+'''
+# 417. Pacific Atlantic Water Flow
+
+## Time Complexity: O(n * m)
+- dfs is called for each cell in the grid, and each cell is visited once.
+
+## Space Complexity: O(n * m)
+- pacific and atlantic sets store the cells that can flow to the pacific and atlantic oceans respectively.
+'''
 class Solution:
     def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
         if len(heights) == 1 and len(heights[0]) == 1:
             return [[0, 0]]
         
-        max_row = len(heights)
-        max_col = len(heights[0])
-        pacific = set()
-        atlantic = set()
+        max_row, max_col = len(heights), len(heights[0])
+        pacific, atlantic = set(), set()
         directions = [(1, 0), (0, 1), (-1, 0), (0, -1)]
 
         def dfs(r, c, visited, prev_height):
