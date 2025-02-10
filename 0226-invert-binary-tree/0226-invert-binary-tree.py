@@ -29,3 +29,17 @@ class Solution:
             stack.append(node.right)
 
         return root
+
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        dq = deque([root])
+
+        while dq:
+            node = dq.popleft()
+            if not node:
+                continue
+            
+            node.left, node.right = node.right, node.left
+            dq.append(node.left)
+            dq.append(node.right)
+
+        return root
