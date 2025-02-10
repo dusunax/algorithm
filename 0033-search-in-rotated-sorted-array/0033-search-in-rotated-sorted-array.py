@@ -18,6 +18,6 @@ class Solution:
                 if nums[mid] < target <= nums[right]:  
                     left = mid + 1
                 else:
-                    right = mid - 1  # 왼쪽 범위 탐색
+                    right = mid - 1
 
-        return -1  # 타겟을 찾지 못한 경우
+        return -1
