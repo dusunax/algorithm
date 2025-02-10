@@ -9,7 +9,7 @@ class Solution:
             if nums[mid] == target:
                 return mid
 
-            if is_left_sorted: # is_left_sorted
+            if nums[left] <= nums[mid]: # is_left_sorted
                 if nums[left] <= target < nums[mid]: # is_target_left
                     right = mid - 1
                 else:
