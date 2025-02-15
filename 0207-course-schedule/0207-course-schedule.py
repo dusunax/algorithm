@@ -113,7 +113,7 @@ class Solution:
         return all(dfs(crs) for crs in range(numCourses))
 
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
-        graph = defaultdict(list)
+        graph = {i: [] for i in range(numCourses)}
 
         for dest, src in prerequisites:
             graph[src].append(dest)
