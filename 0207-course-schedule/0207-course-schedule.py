@@ -89,7 +89,7 @@ class Solution:
         
         return processed_count == numCourses
 
-    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+    def canFinishCycleDetection(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         graph = defaultdict(list)
 
         for dest, src in prerequisites:
@@ -111,3 +111,23 @@ class Solution:
             return True
 
         return all(dfs(crs) for crs in range(numCourses))
+
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        graph = defaultdict(list)
+
+        for dest, src in prerequisites:
+            graph[src].append(dest)
+
+        traversing = set()
+
+        @cache
+        def dfs(node):
+            if node in traversing:
+                return False
+
+            traversing.add(node)
+            result = all(dfs(pre) for pre in graph[node])
+            traversing.remove(node)
+            return result
+
+        return all(dfs(node) for node in range(numCourses))
