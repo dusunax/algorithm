@@ -59,6 +59,8 @@ E: 간선 수(선수 과목 관계 수)
 ```
 키워드: 사이클이 있는지 판단
 ```
+
+### 
 '''
 from enum import Enum
 
@@ -112,7 +114,7 @@ class Solution:
 
         return all(dfs(crs) for crs in range(numCourses))
 
-    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+    def canFinishWithCache(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         graph = defaultdict(list)
 
         for dest, src in prerequisites:
@@ -131,3 +133,29 @@ class Solution:
             return result
 
         return all(dfs(node) for node in range(numCourses))
+
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        graph = defaultdict(list)
+
+        for dest, src in prerequisites:
+            graph[src].append(dest)
+
+        traversing = set() 
+        visited = set()    
+
+        def dfs(node):
+            if node in traversing:
+                return False
+            if node in visited:
+                return True
+
+            traversing.add(node)
+            for pre in graph[node]:
+                if not dfs(pre):
+                    return False
+            traversing.remove(node)
+
+            visited.add(node) 
+            return True
+
+        return all(dfs(i) for i in range(numCourses))
