@@ -11,7 +11,7 @@
 
 ## 해결 방식
 1. BFS, Queue, Topological Sort: 위상 정렬
-2. DFS, Cycle Detection
+2. DFS, Cycle Detection: 순환 탐지
 
 ## 위상 정렬(Topological Sort) - BFS, Queue
 - 진입 차수(indegree): 노드로 들어오는 화살표 수
@@ -22,16 +22,21 @@
 
 ## 순환 탐지(Cycle Detection) - DFS
 - 그래프로 인접 리스트 구성
-- 방문 배열 초기화
+- 방문 상태 배열 초기화
 - dfs 함수
 - 모든 노드에 대해 dfs 실행
 '''
+from enum import Enum
+
+class Status(Enum): # use it to dfs
+    INITIAL = 1
+    IN_PROGRESS = 2
+    FINISHED = 3
+
 class Solution:
-    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+    def canFinishTopologicalSort(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         indegree = [0] * numCourses
         graph = defaultdict(list)
-
-        print(indegree, graph)
 
         for dest, src in prerequisites:
             graph[src].append(dest)
@@ -47,9 +52,28 @@ class Solution:
                 indegree[neighbor] -= 1
                 if indegree[neighbor] == 0:
                     queue.append(neighbor)
-
-
-
-        print(indegree, graph, queue)
         
         return processed_count == numCourses
+
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        graph = defaultdict(list)
+
+        for dest, src in prerequisites:
+            graph[src].append(dest)
+
+        statuses = {i: Status.INITIAL for i in range(numCourses)}
+
+        def dfs(node):
+            if statuses[node] == Status.IN_PROGRESS:
+                return False
+            if statuses[node] == Status.FINISHED:
+                return True
+
+            statuses[node] = Status.IN_PROGRESS
+            for neighbor in graph[node]:
+                if not dfs(neighbor):
+                    return False
+            statuses[node] = Status.FINISHED
+            return True
+
+        return all(dfs(crs) for crs in range(numCourses))
