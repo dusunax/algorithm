@@ -3,11 +3,10 @@
 참고 영상: https://www.youtube.com/watch?v=EgI5nU9etnU
 문제 풀이: https://www.algodale.com/problems/course-schedule/
 
-## 문제 개념정리
-prerequisites란? 필수 선수 과목이다.  
-방향성이 있는 연결 관계이므로, Directed Graph다.  
-Cycle 발생 시, 코스를 이수할 수 없다.  
-- 서로 의존하는 순환이 있을 때, 끝없이 돌게 되는 경우를 순환이라 함
+## 문제 정리
+\U0001f449 prerequisites란? 필수 선수 과목이다.  
+\U0001f449 방향성이 있는 연결 관계이므로, Directed Graph다.  
+\U0001f449 Cycle 발생 시, 코스를 이수할 수 없다.(서로 의존하는 순환이 있어서 끝없이 돌게 되는 경우)
 
 ## 해결 방식 두가지
 1. BFS, Queue, Topological Sort: 위상 정렬
@@ -34,16 +33,15 @@ E: 간선 수(선수 과목 관계 수)
 ```
 
 ### TC is O(V + E)
-
 두 방법 모두, 그래프의 모든 노드와 간선을 한 번씩 확인함
 - BFS: 모든 V를 순회하면서, 각 노드에서 나가는 E를 따라가며 차수를 줄임
 - DFS: 모든 V를 순회하면서, 각 노드에서 연결된 E를 따라가며 깊이 탐색
 
 ### SC is O(V + E)
-- V + E를 저장하는 인접 리스트 그래프 때문에 기본 공간 O(V+E)
-- O(V) 공간들: 방문 상태 저장, 진입 차수 배열, BFS 큐, DFS 호출 스택
+- O(V+E): V + E를 저장하는 인접 리스트 그래프
+- O(V)'s: 방문 상태 저장, 진입 차수 배열, BFS 큐, DFS 호출 스택
 
-## 위상정렬(BFS) vs 순환탐지(DFS) \U0001f914
+## 위상정렬(BFS) vs 순환탐지(DFS)\U0001f914
 
 ### BFS를 사용했을 때
 - 반복문을 사용한 BFS가 indegree(진입차수) 개념이 보다 직관적이므로 => "순서대로 처리할 수 있는지 확인"할 때 명확하게 사용할 수 있다. 진입 차수가 0인 노드부터 시작해서 처리
@@ -60,7 +58,9 @@ E: 간선 수(선수 과목 관계 수)
 키워드: 사이클이 있는지 판단
 ```
 
-### 
+### +a) `@cache`를 활용해보자.
+- 파이선 3.9~ 메모이제이션 함수
+- 순수 함수 + 재귀 최적화에 사용 (외부 의존성, 부수효과에 주의할 것)
 '''
 from enum import Enum
 
@@ -70,6 +70,10 @@ class Status(Enum): # use it to dfs
     FINISHED = 3
 
 class Solution:
+    '''
+    1. BFS
+    위상 정렬
+    '''
     def canFinishTopologicalSort(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         indegree = [0] * numCourses
         graph = defaultdict(list)
@@ -91,6 +95,10 @@ class Solution:
         
         return processed_count == numCourses
 
+    '''
+    2. DFS
+    순환 탐지
+    '''
     def canFinishCycleDetection(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         graph = defaultdict(list)
 
@@ -114,6 +122,13 @@ class Solution:
 
         return all(dfs(crs) for crs in range(numCourses))
 
+    '''
+    3. @cache
+
+    파이썬 3.9 이상에서 사용하는 메모이제이션 데코레이터
+    - 동일 입력 -> 동일 출력을 보장한다.
+    - 128개 까지만 저장하는 @lru_cache도 있다.
+    '''
     def canFinishWithCache(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         graph = defaultdict(list)
 
@@ -134,6 +149,13 @@ class Solution:
 
         return all(dfs(node) for node in range(numCourses))
 
+    '''
+    4. visited과 함께 사용하기
+
+    @cache 데코레이터는 메모이제이션, 같은 입력값에 따라 같은 결과를 반환하게함
+    결과가 변하지 않을 때 유용함 => dfs(node)는 외부 상태 순환 traversing에 의존해서 동작이 달라질 수 있다.
+    따라서 visited set이 더 자연스러울 수 있다
+    '''
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         graph = defaultdict(list)
 
