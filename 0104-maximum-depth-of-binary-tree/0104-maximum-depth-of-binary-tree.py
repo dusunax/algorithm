@@ -5,11 +5,19 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def maxDepth(self, root: Optional[TreeNode]) -> int:
-        if root is None:
-            return 0
-        
-        left_depth = self.maxDepth(root.left)
-        right_depth = self.maxDepth(root.right)
+    def maxDepth(self, root: Optional[TreeNode]) -> int: 
+        max_depth = 0
 
-        return max(left_depth, right_depth) + 1
+        def helper(node, count):
+            nonlocal max_depth 
+            if node is None:
+                max_depth = max(max_depth, count)
+                return
+
+            helper(node.left, count+1) 
+            helper(node.right, count + 1)
+
+        helper(root, max_depth)
+
+        return max_depth
+                
