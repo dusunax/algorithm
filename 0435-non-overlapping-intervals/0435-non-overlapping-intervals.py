@@ -1,46 +1,53 @@
 '''
 # 435. Non-overlapping Intervals
 
-- 인터벌이 오버래핑 되지 않기위해 지워야하는 인터벌의 최소값 반환
-- 그래프에 순환이 있는지 여부를 알아본다 <- ❌ overkill
-- should approach with => Greedy 
+## understanding the problem
+- 겹치지 않는 인터벌을 최대한 많이 남기기 위해, 지워야하는 인터벌의 최소값 반환
+- not it: 그래프에 순환이 있는지 여부를 알아본다❌ overkill
+- core approach: Greedy 
 
 ## Greedy
-- if you detecte interval overapping, you should remove
-    - not physically. keeping counts is enough.
-- Todo: keep many intervals, so can minimize removal as possible.
+- Whenever you detect an overlap, you should remove one.
+    - not physically. we'll going to return counts, so just keep counts is enough.
+- Goal: keep many non-overlapping intervals as possible to minimize removal.
 
-## how to detects overlaps?
-- sorts intervals by ends, iterate intervals with tracking down the prev_end
-- current_start < prev_end
-    - if start time is smaller than a prev_end = overlap 
-        - ex) [2, 4] is overlap with [1, 3]
-            - start (2) is smaller than end (3)
-    - keep the interval ends first
+### how to detect overlap?
+1. sort intervals by ends
+2. iterate through intervals while tracking down the prev_end(last vaild end time)
+  - if `current_start < prev_end`, it's overlap.
+    - Example: 
+      - [2, 4] is overlap with [1, 3]
+      - start (2) is smaller than end (3)
 
-## which one should removed?
-- when overlap, what to remove comparson is => one's ends later (because it restricts more future intervals).
-    - leave the most room for the future non-overlapping intervals.
-    - the longer an interval lasts, the more it blocks others.
+### which one should removed?
+- when overlap happens, remove the interval that ends later 
+  - it will restrict more future intervals.
+    - the longer an interval lasts, the more it blocks others(leaving less room for non-overlapping intervals)
 
-## how to perform
-- sorts interval as ends
+## complexity
+
+### TC is O(n log n)
+- sorting: O(n log n)
+- iterating: O(n)
+- total: O(n log n)
+
+### SC is O(1)
+- no extra space is used
 '''
 class Solution:
     def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
         intervals.sort(key=lambda x: x[1])
 
-        count = 0 # don't need to trackdown everything
-        prev_end = intervals[0][1] # tracking the last end time
+        count = 0 # number of removals
+        prev_end = intervals[0][1] # last valid end time
         
         for start, end in intervals[1:]: # 1 ~ n-1
-            if start < prev_end: # overlap detection
+            if start < prev_end: # overlap detected
                 count += 1 
-                # not moving the prev_end pointer == prev_end is still pointing at the previous interval  == keeping the interval ends earlier
+                # <do NOT move the prev_end pointer>
+                # prev_end is still pointing at the previous interval 
+                # so it's keeping the interval ends earlier. (removing the longer one)
             else: 
                 prev_end = end
         
         return count
-
-        
-        
