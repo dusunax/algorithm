@@ -27,7 +27,7 @@ class Solution:
 - failed testcase: [5,4,6,null,null,3,7]
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        def dfs(node):
+        def dfs(node): # this'll only compared with its immediate left and right children.
             if not node:
                 return True
             if node.left and node.val <= node.left.val:
