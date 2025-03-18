@@ -4,24 +4,38 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+'''
+
+- left is smaller than val
+- right is bigger than val
+'''
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        if not root:
-            return True
-        
-        min = float("-inf")
-        max = float("inf")
-        
-        def bstCheck(self, node, min, max) -> bool:
+        def dfs(node, low = float('-inf'), high = float('inf')):
             if not node:
-                return True 
-            if node.val <= min or node.val >= max:
+                return True
+            if not (low < node.val < high):
                 return False
             
-            return bstCheck(self, node.left, min, node.val) and bstCheck(self, node.right, node.val, max)
+            return dfs(node.left, low, node.val) and dfs(node.right, node.val, high)
+        
+        return dfs(root) 
 
-        return bstCheck(self, root, min, max)
-                
+'''
+- 루트와의 비교를 수행하지 않았음
+- failed testcase: [5,4,6,null,null,3,7]
+class Solution:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        def dfs(node):
+            if not node:
+                return True
+            if node.left and node.val <= node.left.val:
+                return False
+            if node.right and node.val >= node.right.val:
+                return False
+            
+            return dfs(node.left) and dfs(node.right)
         
-        
-        
+        return dfs(root) 
+'''
