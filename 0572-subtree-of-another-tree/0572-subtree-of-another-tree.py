@@ -29,34 +29,34 @@ class Solution:
     TC: O(n * m), m is the number of nodes in the subRoot.
     SC: O(n) (recursive stack space)
     '''
-    def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
-        if not root:
-            return False
-        if not subRoot:
-            return True
+    # def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
+    #     if not root:
+    #         return False
+    #     if not subRoot:
+    #         return True
 
-        if self.isIdentical(root, subRoot): 
-            return True
+    #     if self.isIdentical(root, subRoot): 
+    #         return True
 
-        return self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot)
+    #     return self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot)
 
-    def isIdentical(self, s: Optional[TreeNode], t: Optional[TreeNode]) -> bool:
-        if not s and not t:
-            return True
-        if not s or not t:
-            return False
+    # def isIdentical(self, s: Optional[TreeNode], t: Optional[TreeNode]) -> bool:
+    #     if not s and not t:
+    #         return True
+    #     if not s or not t:
+    #         return False
             
-        return s.val == t.val and self.isIdentical(s.left, t.left) and self.isIdentical(s.right, t.right)
+    #     return s.val == t.val and self.isIdentical(s.left, t.left) and self.isIdentical(s.right, t.right)
 
     '''
     2. Snapshot
     TC: O(n + m), n is the number of nodes in the root, m is the number of nodes in the subRoot.
     SC: O(n + m) (recursive stack space)
     '''
-    # def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
-    #     def preorder(node):
-    #         if not node:
-    #             return 'X'
-    #         return f'{node.val} {preorder(node.left)} {preorder(node.right)}'
+    def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
+        def preorder(node):
+            if not node:
+                return '#'
+            return f'({node.val},{preorder(node.left)},{preorder(node.right)})'
 
-    #     return preorder(subRoot) in preorder(root)
+        return preorder(subRoot) in preorder(root)
