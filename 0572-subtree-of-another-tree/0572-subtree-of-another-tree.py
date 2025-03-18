@@ -9,7 +9,7 @@ use a recursive function to check if the two trees are identical.
 - isSubtree
   - if the current tree is None, return False.
   - if the subRoot is None, return True. (empty tree is a subtree of any tree)
-- isIdentical
+- isIdentical (helper)
   - if both trees are None, return True. (they are identical)
   - if one of the trees is None, return False.
   - if the values of the current nodes are different, return False.
@@ -20,21 +20,33 @@ class Solution:
     TC: O(n * m), m is the number of nodes in the subRoot.
     SC: O(n) (recursive stack space)
     '''
-    def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
-        if not root:
-            return False
-        if not subRoot:
-            return True
+    # def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
+    #     if not root:
+    #         return False
+    #     if not subRoot:
+    #         return True
 
-        if self.isIdentical(root, subRoot): 
-            return True
+    #     if self.isIdentical(root, subRoot): 
+    #         return True
 
-        return self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot)
+    #     return self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot)
 
-    def isIdentical(self, s: Optional[TreeNode], t: Optional[TreeNode]) -> bool:
-        if not s and not t:
-            return True
-        if not s or not t:
-            return False
+    # def isIdentical(self, s: Optional[TreeNode], t: Optional[TreeNode]) -> bool:
+    #     if not s and not t:
+    #         return True
+    #     if not s or not t:
+    #         return False
             
-        return s.val == t.val and self.isIdentical(s.left, t.left) and self.isIdentical(s.right, t.right)
+    #     return s.val == t.val and self.isIdentical(s.left, t.left) and self.isIdentical(s.right, t.right)
+
+    '''
+    B. use snapshots
+    reference: https://www.algodale.com/problems/subtree-of-another-tree/
+    '''
+    def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
+        def preorder(node):
+            if not node:
+                return '#'
+            return f'({node.val},{preorder(node.left)},{preorder(node.right)})'
+        
+        return preorder(subRoot) in preorder(root)
