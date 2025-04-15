@@ -23,6 +23,8 @@ class Solution:
         return result
 
     # B. Refactored answer
+    # - iterate pair using zip(), simplify the code.
+    # - list appending is faster than stirng concatenation. 
     def mergeAlternately(self, word1: str, word2: str) -> str:
         result = []
 
