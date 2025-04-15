@@ -1,5 +1,7 @@
 class Solution:
-    def mergeAlternately(self, word1: str, word2: str) -> str:
+    # A. String concatenation & Shorter str.
+    # idea was => find out the shorter str first, so I can reduce the iteraction count for better TC.
+    def mergeAlternatelyA(self, word1: str, word2: str) -> str:
         isWord1Smaller = len(word1) < len(word2)
         result = ""
 
@@ -19,3 +21,15 @@ class Solution:
             result += word2
         
         return result
+
+    # B. Refactored answer
+    def mergeAlternately(self, word1: str, word2: str) -> str:
+        result = []
+
+        for c1, c2 in zip(word1, word2):
+            result.append(c1)
+            result.append(c2)
+
+        result.append(word1[len(word2):] if len(word1) > len(word2) else word2[len(word1):])
+
+        return "".join(result)
