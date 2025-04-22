@@ -31,7 +31,7 @@ class Solution:
                 if n == 0:
                     return True
 
-        return False
+        return n<=0
 '''
 # Outline
 - plant flowers in the plots. no adjacent.
