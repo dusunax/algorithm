@@ -6,6 +6,10 @@ Key constraints:
 insert sort
 - sorted array
 - pick up the target from unsorted array, iterate sorted array for comparsion, find the right place? insert it.
+
+key point
+- use write to overwrite el
+- after swapping, fills the ramaining tail with 0
 '''
 class Solution:
     def moveZeroes(self, nums: List[int]) -> None:
