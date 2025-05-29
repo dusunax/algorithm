@@ -14,7 +14,7 @@ https://github.com/QasimWani/LeetHub
 
 ### 사용언어
 ```
-JavaScript, Python(기초), Java(기초)
+JavaScript, Python, Java(기초)
 ```
 
 ### 목표
