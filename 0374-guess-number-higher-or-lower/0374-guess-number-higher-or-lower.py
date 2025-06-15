@@ -13,14 +13,28 @@ binary search
 
 class Solution:
     def guessNumber(self, n: int) -> int:
-        current = int(n/2) + 1
+        low, high = 1, n
 
-        for i in range(5):
-            gussing_result = guess(current)
+        while low <= high:
+            mid = (low + high) // 2
 
-            if gussing_result == 0:
-                return current
-            elif gussing_result == 1:
-                current = int((current + n) / 2)
+            if guess(mid) == 0:
+                return mid
+            elif guess(mid) == 1:
+                low = mid+1
             else:
-                current = int(current/2)
+                high = mid-1
+
+    # ❌ not it - binary search need low and high bounds
+    # def guessNumber(self, n: int) -> int:
+    #     current = int(n/2) + 1
+
+    #     for i in range(5):
+    #         gussing_result = guess(current)
+
+    #         if gussing_result == 0:
+    #             return current
+    #         elif gussing_result == 1:
+    #             current = int((current + n) / 2)
+    #         else:
+    #             current = int(current/2)
