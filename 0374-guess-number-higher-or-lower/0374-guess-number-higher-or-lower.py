@@ -17,10 +17,11 @@ class Solution:
 
         while low <= high:
             mid = (low + high) // 2
+            guess_result = guess(mid)
 
-            if guess(mid) == 0:
+            if guess_result == 0:
                 return mid
-            elif guess(mid) == 1:
+            elif guess_result == 1:
                 low = mid+1
             else:
                 high = mid-1
