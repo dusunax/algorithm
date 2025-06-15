@@ -16,7 +16,7 @@ class Solution:
         low, high = 1, n
 
         while low <= high:
-            mid = (low + high) // 2
+            mid = low + (high - low) // 2
             guess_result = guess(mid)
 
             if guess_result == 0:
