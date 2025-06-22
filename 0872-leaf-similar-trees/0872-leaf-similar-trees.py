@@ -14,11 +14,12 @@
 - get the leaves of the 2 trees by DFS.
 - compare if they are same and return the boolean.
 
-# Approach2: DFS + BFS on the fly
+# (Test case failed) Approach2: DFS + BFS on the fly
 - get the leaves of the root1 tree.
 - using BFS, compare the root1 result with leaves of root2
     - return false if they are not match, otherwise continue.
 - after compare, return true.
+=> ❌ BFS does not guarantee left-to-right leaf order
 '''
 class Solution:
     '''
@@ -50,3 +51,25 @@ class Solution:
         # no visited check, nothing to do unless it is a leaf node.
         self.dfs(node.left, leaves)
         self.dfs(node.right, leaves)
+
+    # ---------------------------------------
+    # This is Approach2, which is not working.
+    def leafSimilarNotWorking(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
+        leaves1 = self.getLeaves(root1)
+
+        queue = deque([root2])
+        i = 0
+
+        while queue:
+            node = queue.popleft()
+            if not node.left and not node.right:
+                if i >= len(leaves1) or node.val != leaves1[i]:
+                    return False
+                i += 1
+            else:
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+                
+        return i == len(leaves1)
