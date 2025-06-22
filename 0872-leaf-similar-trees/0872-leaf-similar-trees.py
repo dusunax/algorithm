@@ -23,6 +23,13 @@
 class Solution:
     '''
     Approach1
+    - TC: O(n + m)
+        - n for root1's tree's nodes
+        - m for root2's tree's nodes.
+    - SC: O(h1 + h2 + l)
+        - h1 for tree height of root1's tree. 
+        - h2 for tree height of root2's tree
+        - l for number of leaves.
     '''
     def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
         leaves1 = self.getLeaves(root1)
