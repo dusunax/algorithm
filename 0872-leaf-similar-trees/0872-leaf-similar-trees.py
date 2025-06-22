@@ -19,7 +19,7 @@
 - using BFS, compare the root1 result with leaves of root2
     - return false if they are not match, otherwise continue.
 - after compare, return true.
-=> ❌ BFS does not guarantee left-to-right leaf order
+=> ❌ BFS does not guarantee left-to-right leaf order, when comparing on the fly with root1's leaves.
 '''
 class Solution:
     '''
