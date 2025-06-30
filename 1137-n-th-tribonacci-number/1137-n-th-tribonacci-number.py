@@ -20,9 +20,9 @@ class Solution:
 
         if n == 0: 
             return t0
-        if n == 1:
+        elif n == 1:
             return t1
-        if n == 2:
+        elif n == 2:
             return t2
 
         for _ in range(3, n+1):
