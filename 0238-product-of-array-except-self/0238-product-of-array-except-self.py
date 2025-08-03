@@ -1,17 +1,25 @@
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
-        n = len(nums)
-        answer = [1] * n
+        result = [1] * len(nums)
+        prefix, suffix = 1, 1
 
         # prefix
-        for i in range(1, n):
-            answer[i] *= nums[i - 1] * answer[i - 1]
+        for i in range(1, len(nums)):
+            prefix *= nums[i - 1]
+            result[i] = prefix
 
         # suffix
-        suffix_product = 1
-        for i in range(n - 1, -1, -1):
-            answer[i] *= suffix_product
-            suffix_product *= nums[i]
+        for i in range(len(nums) - 2, -1, -1):
+            suffix *= nums[i + 1]
+            result[i] *= suffix
 
-        return answer
+        return result
         
+# answer[i] = product of all elements of nums, except nums[i]
+
+# prefix(0 to i-1) + surfix(i+1 to len-1)
+
+# iterate the array, using nums[i]
+# - prefix // 0 to i-1
+# - suffix // len-1 to i+1
+
