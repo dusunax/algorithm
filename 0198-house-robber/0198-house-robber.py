@@ -1,20 +1,29 @@
-# get all the cases of the robbery case
-# return the maximum amount of money
+'''
+## problem
+- robbing thoes houses again. 
+- houses is in a row.
+- no robbing adjacent houses.
+- return the maximum amount of money you can rob.
+
+## questions
+- do I need a dp table? => yes, and no
+  - DP optimization: you don’t store the whole table, just the last two results (prev1, prev2).
+'''
 
 class Solution:
     def rob(self, nums: List[int]) -> int:
         if len(nums) == 1:
-            return nums[0]
+            return nums[0] 
+        if len(nums) == 2:
+            return max(nums[0], nums[1])
 
-        dp = [0] * len(nums)
-        dp[0] = nums[0]
-        dp[1] = max(nums[0], nums[1])
+        prev1 = max(nums[0], nums[1]) 
+        prev2 = nums[0]
 
-        for i in range(2, len(nums)):
-            dp[i] = max(dp[i - 1], dp[i - 2] + nums[i])
-            # dp[i - 1]: skip and take the value from the previous house
-            # dp[i - 2]: rob the current house, add its value to the maximum money from two houses before
+        for curr in nums[2:]:
+            max_money = max(prev1, curr + prev2)
+            prev2 = prev1
+            prev1 = max_money
             
-        return dp[-1]
-
-        
+        return prev1
+         
