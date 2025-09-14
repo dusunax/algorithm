@@ -15,7 +15,7 @@
 class Solution:
     '''
     # Linked-list
-    - TC is O(1), travarse once
+    - TC is O(n), travarse once
     - SC is O(1), no additional structure
     '''
     def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
@@ -32,10 +32,11 @@ class Solution:
             odd.next = even.next
             odd = odd.next 
             '''
-            In this case, when each traverse step, \U0001f449 move the odd first to simplify the pointer jumping and etc. Like `even = even.next.next` or use addition temp variable.
+            # Always move odd first, then even — avoids extra temp variables 
+            \U0001f449 move the odd first to simplify the pointer jumping and etc. 
+            Like `even = even.next.next` or use addition temp variable.
             '''
-            
-            even.next = odd.next
+            even.next = odd.next 
             even = even.next
 
         odd.next = even_head
