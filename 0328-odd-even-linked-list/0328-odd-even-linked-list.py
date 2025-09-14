@@ -13,6 +13,11 @@
 #         self.val = val
 #         self.next = next
 class Solution:
+    '''
+    # Linked-list
+    - TC is O(1), travarse once
+    - SC is O(1), no additional structure
+    '''
     def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if head is None:
             return None
@@ -25,8 +30,11 @@ class Solution:
         
         while even is not None and even.next is not None:
             odd.next = even.next
-            odd = odd.next
-
+            odd = odd.next 
+            '''
+            In this case, when each traverse step, \U0001f449 move the odd first to simplify the pointer jumping and etc. Like `even = even.next.next` or use addition temp variable.
+            '''
+            
             even.next = odd.next
             even = even.next
 
