@@ -2,7 +2,7 @@
 - separate odd/even indices
 - reorder by odd-even 
 - it's stable (no mixed up of relative order) 
-- TC should be O(1): have to manipulate the order as you go
+- TC should be O(n): have to manipulate the order as you go
 - SC is also should be O(1): no extra structure. just re-linking nodes
 - i is starts from 1
 '''
