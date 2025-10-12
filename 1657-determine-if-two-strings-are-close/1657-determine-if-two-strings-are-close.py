@@ -9,28 +9,29 @@
 
 # Set / Map
 - `Set` for compare two string
-- `Map` for count chars
-- multiset
+- `Map` for count chars (+ multiset)
 '''
 class Solution:
     def closeStrings(self, word1: str, word2: str) -> bool:
-        # op1
+        # set: alphabet compare
         s1 = set(word1)
         s2 = set(word2)
         if s1 != s2:
             return False
 
-        # op2
+        # map
         c1 = Counter(word1)
         c2 = Counter(word2)
+        return True if sorted(c1.values()) == sorted(c2.values()) else False
         
-        c1_multiset = []
-        c2_multiset = []
-        for _char, count in c1.items():
-            c1_multiset.append(count)
-        for _char, count in c2.items():
-            c2_multiset.append(count)
+        # c1_multiset = []
+        # c2_multiset = []
+        # for _char, count in c1.items():
+        #     c1_multiset.append(count)
+        # for _char, count in c2.items():
+        #     c2_multiset.append(count)
 
-        c1_multiset.sort()
-        c2_multiset.sort()
-        return True if c1_multiset == c2_multiset else False
+        # c1_multiset.sort()
+        # c2_multiset.sort()
+
+        # return True if c1_multiset == c2_multiset else False
